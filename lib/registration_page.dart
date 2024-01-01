@@ -52,7 +52,7 @@ class _RegistrationPageState extends State<RegistrationPage>  with RouteAwareAna
                 String newPassword = _newPasswordController.text;
                 // Example validation and registration logic
                 if (newUsername.isNotEmpty && newPassword.isNotEmpty) {
-                  amplitudeManager.logEvent(
+                  moEngageManager.logEvent(
                       event: "Registration",
                       properties: {'newUsername': newUsername});
                   debugPrint('Registration successful');

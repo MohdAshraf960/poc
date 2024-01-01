@@ -2,10 +2,10 @@ library mixpanel_poc;
 
 import 'package:mixpanel_flutter/mixpanel_flutter.dart';
 
-class amplitudeManager {
+class AmplitudeManager {
   final Mixpanel _instance;
 
-  amplitudeManager({required Mixpanel instance}) : _instance = instance;
+  AmplitudeManager({required Mixpanel instance}) : _instance = instance;
 
   Future<String?> getDistinctId() async {
     return await _instance.getDistinctId();

@@ -1,7 +1,7 @@
-name: moengage_poc
+name: mo_poc
 description: "A new Flutter package project."
 version: 0.0.1
-homepage: 'none'
+homepage:
 
 environment:
   sdk: '>=3.2.0 <4.0.0'
@@ -10,7 +10,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  moengage_flutter: ^6.1.0  
 
 dev_dependencies:
   flutter_test:

@@ -46,6 +46,7 @@ dependencies:
     path: packages/firebase_analytics_poc  
   moengage_poc:
     path: packages/moengage_poc
+  
 
 
 
