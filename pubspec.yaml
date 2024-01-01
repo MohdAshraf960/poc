@@ -43,7 +43,10 @@ dependencies:
   amplitude_poc:
     path: packages/amplitude_poc
   firebase_analytics_poc:
-    path: packages/firebase_analytics_poc    
+    path: packages/firebase_analytics_poc  
+  moengage_poc:
+    path: packages/moengage_poc
+
 
 
 dev_dependencies:
