@@ -2,22 +2,20 @@
 
 
 import 'dart:developer';
-
-import 'package:amplitude_poc/amplitude_poc.dart';
 import 'package:flutter/widgets.dart';
-
+import 'package:mixpanel_poc/mixpanel.dart';
 import 'package:poc/main.dart';
 
 
 final routeObserver = RouteObserver<PageRoute>();
 
+ final analyticsManager = get<MixPanelManager>();
+
 mixin RouteAwareAnalytics<T extends StatefulWidget> on State<T>
     implements RouteAware {
   AnalyticsRoute get route;
-  // final amplitudeManager = get<amplitudeManager>();
-   final amplitudeManager = get<AmplitudeManager>();
-
-  @override
+  
+    @override
   void didChangeDependencies() {
     routeObserver.subscribe(this, ModalRoute.of(context) as PageRoute);
     super.didChangeDependencies();
@@ -34,14 +32,11 @@ mixin RouteAwareAnalytics<T extends StatefulWidget> on State<T>
 
   @override
   void didPopNext() {
-    // Called when the top route has been popped off,
-    // and the current route shows up.
     _setCurrentScreen(route);
   }
 
   @override
   void didPush() {
-    // Called when the current route has been pushed.
     _setCurrentScreen(route);
   }
 
@@ -50,14 +45,15 @@ mixin RouteAwareAnalytics<T extends StatefulWidget> on State<T>
 
   Future<void> _setCurrentScreen(AnalyticsRoute analyticsRoute) async{
     log('Setting current screen to ${analyticsRoute.name}',name: analyticsRoute.name);
-    amplitudeManager.logEvent(event: screenClass(route),properties: {"screen_name": screenClass(route), "timestamp":DateTime.now().millisecondsSinceEpoch}); 
+    
+    analyticsManager.logEvent(event: screenClass(route),properties: {"screen_name": screenClass(route), "timestamp":DateTime.now().millisecondsSinceEpoch,}); 
     
   }
 }
 
 
 
-enum AnalyticsRoute { login,register,home }
+enum AnalyticsRoute { login,register,home,screen1,screen2,screen3 }
 
 String screenClass(AnalyticsRoute route) {
   switch (route) {
@@ -67,6 +63,11 @@ String screenClass(AnalyticsRoute route) {
        return 'Register Viewed';
     case AnalyticsRoute.home:
        return 'Home Viewed';
+    case AnalyticsRoute.screen1:
+       return 'Screen 1 Viewed';
+    case AnalyticsRoute.screen2:
+       return 'Screen 2 Viewed';
+    case AnalyticsRoute.screen3:
+       return 'Screen 3 Viewed';
   }
 }
-

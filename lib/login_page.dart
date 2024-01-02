@@ -49,11 +49,10 @@ class LoginPageState extends State<LoginPage> with RouteAwareAnalytics {
               
                 // Example validation (you should replace this with your authentication logic)
 
-                amplitudeManager.logEvent(
+                analyticsManager.logEvent(
                     event: 'Login', properties: {'username': username});
-                amplitudeManager.setUserId(userId: username);
-
-                // Navigate to the home page or perform other actions
+                
+                analyticsManager.setIdentifier(identifierName: username);    
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const HomeScreen()),
