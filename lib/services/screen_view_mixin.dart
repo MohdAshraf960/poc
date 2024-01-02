@@ -2,11 +2,8 @@
 
 
 import 'dart:developer';
-
-
 import 'package:flutter/widgets.dart';
-import 'package:moengage_poc/moengage_poc.dart';
-
+import 'package:mixpanel_poc/mixpanel.dart';
 import 'package:poc/main.dart';
 
 
@@ -17,7 +14,7 @@ mixin RouteAwareAnalytics<T extends StatefulWidget> on State<T>
   AnalyticsRoute get route;
   
   
-  final moEngageManager = get<MoEngageManager>();
+  final amplitudeManager = get<MixPanelManager>();
 
   @override
   void didChangeDependencies() {
@@ -52,14 +49,14 @@ mixin RouteAwareAnalytics<T extends StatefulWidget> on State<T>
 
   Future<void> _setCurrentScreen(AnalyticsRoute analyticsRoute) async{
     log('Setting current screen to ${analyticsRoute.name}',name: analyticsRoute.name);
-    moEngageManager.logEvent(event: screenClass(route),properties: {"screen_name": screenClass(route), "timestamp":DateTime.now().millisecondsSinceEpoch}); 
+    amplitudeManager.logEvent(event: screenClass(route),properties: {"screen_name": screenClass(route), "timestamp":DateTime.now().millisecondsSinceEpoch}); 
     
   }
 }
 
 
 
-enum AnalyticsRoute { login,register,home }
+enum AnalyticsRoute { login,register,home,screen1,screen2,screen3 }
 
 String screenClass(AnalyticsRoute route) {
   switch (route) {
@@ -69,6 +66,11 @@ String screenClass(AnalyticsRoute route) {
        return 'Register Viewed';
     case AnalyticsRoute.home:
        return 'Home Viewed';
+    case AnalyticsRoute.screen1:
+       return 'Screen 1 Viewed';
+    case AnalyticsRoute.screen2:
+       return 'Screen 2 Viewed';
+    case AnalyticsRoute.screen3:
+       return 'Screen 3 Viewed';
   }
 }
-
