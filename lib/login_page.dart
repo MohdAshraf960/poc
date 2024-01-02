@@ -51,9 +51,8 @@ class LoginPageState extends State<LoginPage> with RouteAwareAnalytics {
 
                 analyticsManager.logEvent(
                     event: 'Login', properties: {'username': username});
-               // moEngageManager.setUserId(userId: username);
-
-                // Navigate to the home page or perform other actions
+                
+                analyticsManager.setIdentifier(identifierName: username);    
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const HomeScreen()),
