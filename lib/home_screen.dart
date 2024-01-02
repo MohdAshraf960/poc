@@ -32,6 +32,7 @@ class _HomeScreenState extends State<HomeScreen> with RouteAwareAnalytics {
             ElevatedButton(
               onPressed: () async {
                 analyticsManager.logEvent(event: 'Logout');
+                analyticsManager.reset();
                 if (!context.mounted) return;
                 Navigator.pop(context); // Navigate back to the login page
               },

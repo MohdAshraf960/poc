@@ -14,13 +14,16 @@ class MixPanelManager {
 
   Future<void> logEvent(
       {required String event,
-      Map<String, dynamic> properties = const {}}) async {
+      Map<String, dynamic>? properties}) async {
+     properties = {};   
     final result = await getDistinctId();
     if (result.isNotEmpty) {
       properties['userId'] = result;
     }
+
+   
     if (properties.isNotEmpty) {
-      _instance.track(event, properties: properties);
+       _instance.track(event, properties: properties);
     } else {
       _instance.track(event);
     }
@@ -28,6 +31,10 @@ class MixPanelManager {
 
   Future<void> setIdentifier({required String identifierName}) async {
     _instance.identify(identifierName);
+  }
+
+  void reset()  {
+    _instance.reset();
   }
    
 }

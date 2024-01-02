@@ -38,6 +38,10 @@ class AmplitudeManager {
   Future<String> getUserId() async {
     return await _instance.getUserId() ?? "";
   }
+
+  reset(){
+    
+  }
 }
 
 Future<Amplitude> initAmplitudeConfig() async {

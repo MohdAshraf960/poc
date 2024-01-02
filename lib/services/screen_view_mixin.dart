@@ -45,7 +45,8 @@ mixin RouteAwareAnalytics<T extends StatefulWidget> on State<T>
 
   Future<void> _setCurrentScreen(AnalyticsRoute analyticsRoute) async{
     log('Setting current screen to ${analyticsRoute.name}',name: analyticsRoute.name);
-    analyticsManager.logEvent(event: screenClass(route),properties: {"screen_name": screenClass(route), "timestamp":DateTime.now().millisecondsSinceEpoch}); 
+    
+    analyticsManager.logEvent(event: screenClass(route),properties: {"screen_name": screenClass(route), "timestamp":DateTime.now().millisecondsSinceEpoch,}); 
     
   }
 }
