@@ -49,7 +49,7 @@ class LoginPageState extends State<LoginPage> with RouteAwareAnalytics {
               
                 // Example validation (you should replace this with your authentication logic)
 
-                amplitudeManager.logEvent(
+                analyticsManager.logEvent(
                     event: 'Login', properties: {'username': username});
                // moEngageManager.setUserId(userId: username);
 

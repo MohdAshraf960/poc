@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:poc/services/screen_view_mixin.dart';
 
 class Screen2 extends StatefulWidget {
@@ -25,7 +26,9 @@ class _Screen2State extends State<Screen2>  with RouteAwareAnalytics {
             ),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () async {},
+              onPressed: () async {
+                analyticsManager.logEvent(event: "screen2",);
+              },
               child: const Text('Screen 2'),
             ),
           ],

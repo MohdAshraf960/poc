@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:poc/login_page.dart';
 import 'package:poc/services/screen_view_mixin.dart';
 
 class Screen3 extends StatefulWidget {
@@ -27,10 +26,7 @@ class _Screen3State extends State<Screen3> with RouteAwareAnalytics {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () async {
-                Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(builder: (context) => const LoginPage()),
-                    (route) => false);
+              analyticsManager.logEvent(event: "screen3",);
               },
               child: const Text('Screen 3'),
             ),
