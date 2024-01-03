@@ -52,9 +52,8 @@ class _RegistrationPageState extends State<RegistrationPage>  with RouteAwareAna
                 String newPassword = _newPasswordController.text;
                 // Example validation and registration logic
                 if (newUsername.isNotEmpty && newPassword.isNotEmpty) {
-                  analyticsManager.logEvent(
-                      event: "Registration",
-                      properties: {'newUsername': newUsername});
+                  analyticsManager.signUpEvent(
+                      userName: newUsername);
                   debugPrint('Registration successful');
                    Navigator.push(
                     context,
