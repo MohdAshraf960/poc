@@ -48,11 +48,10 @@ class LoginPageState extends State<LoginPage> with RouteAwareAnalytics {
                 String username = _usernameController.text;
               
                 // Example validation (you should replace this with your authentication logic)
-
-                analyticsManager.logEvent(
-                    event: 'Login', properties: {'username': username});
+                if(username.isEmpty)   return;
+                analyticsManager.loginEvent(
+                   userName: username);               
                 
-                analyticsManager.setIdentifier(identifierName: username);    
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const HomeScreen()),

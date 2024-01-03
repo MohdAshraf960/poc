@@ -37,15 +37,14 @@ dependencies:
   cupertino_icons: ^1.0.2
   
   get_it: ^7.6.4
+  firebase_core: ^2.24.2
   
   mixpanel_poc:
     path: packages/mixpanel_poc
   amplitude_poc:
     path: packages/amplitude_poc
   firebase_analytics_poc:
-    path: packages/firebase_analytics_poc  
-  moengage_poc:
-    path: packages/moengage_poc
+    path: packages/firebase_analytics_poc
   
 
 

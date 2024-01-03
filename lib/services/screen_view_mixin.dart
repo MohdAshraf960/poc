@@ -2,14 +2,14 @@
 
 
 import 'dart:developer';
+import 'package:firebase_analytics_poc/firebase_analytics_poc.dart';
 import 'package:flutter/widgets.dart';
-import 'package:mixpanel_poc/mixpanel.dart';
 import 'package:poc/main.dart';
 
 
 final routeObserver = RouteObserver<PageRoute>();
 
- final analyticsManager = get<MixPanelManager>();
+ final analyticsManager = get<FirebaseAnalyticsServices>();
 
 mixin RouteAwareAnalytics<T extends StatefulWidget> on State<T>
     implements RouteAware {
@@ -45,9 +45,7 @@ mixin RouteAwareAnalytics<T extends StatefulWidget> on State<T>
 
   Future<void> _setCurrentScreen(AnalyticsRoute analyticsRoute) async{
     log('Setting current screen to ${analyticsRoute.name}',name: analyticsRoute.name);
-    
-    analyticsManager.logEvent(event: screenClass(route),properties: {"screen_name": screenClass(route), "timestamp":DateTime.now().millisecondsSinceEpoch,}); 
-    
+    analyticsManager.logScreenView(screenName: screenClass(route));
   }
 }
 
